@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 只记录部分，其他的一般可查易记 */
+    * {/* 常用的复合写法，推荐，严格顺序，font-size和font-family必须保留，否则失效
+      省略的直接不写，顺序还是不能变
+      font-style font-weight font-size/line-height font-family */
+      font: normal 700 16px "Microsoft yahei";
+      text-decoration: underline;/* 重点记住下划线和none */
+      text-indent:  2em;/* 文本缩进两个字，em表示的就是父元素字体大小 */
+      line-height: 1em;/* 行间距 */
+    }
+  </style>
+</head>
+<body>
+  <!-- CSS层叠样式表，也是一种标记语言
+  它包括： 选择器{声明}
+  标签，类，id，通配符选择器。
+  id选择常用作唯一标识符，经常和js搭配使用。
+  通配符选择器，*表示所有，不推荐使用消耗性能 -->
+
+  <!-- CSS三种样式表（书写位置）
+  1.行内样式表（行内式）即标签内部style属性，完全嵌入结构，极不推荐
+  2.内部样式表（嵌入式）即head内的style标签，没有与结构完全分离
+  3.外部样式表（链接式）即<link rel="stylesheet" href="路径">
+   -->
+
+  <!-- CSS优先级计算规则
+  important：Infinity
+  行间样式（行内样式 内联样式style=“”）：1000
+  id：100
+  class/属性/伪类：10
+  标签选择器/伪元素：1
+  通配：0 -->
+
+  <!-- emmet语法，vscode已集成，用来提高htmlcss语法速度 -->
+  div{内容}
+  div.demon$*5
+
+  <!-- 复合选择器
+  后代（包含）选择器（重要）：祖先元素1 元素2 省略 {声明;}
+  子选择器（重要）选择最近一级的元素，可以过滤掉孙子元素：父元素>子元素 {声明;}
+  并集选择器（重要）集体声明：元素1, 元素2, 省略 {声明;}
+  伪类选择器，伪类选择器用 : 表示：元素:伪类，更多参考文档
+  -->
+  <!-- 链接伪类，声明顺序不能变 a:link a:visited a:hover a:active  -->
+  <!-- focus伪类，有焦点的元素 -->
+  input:focus {
+    color: red;
+  }
+</body>
+</html>

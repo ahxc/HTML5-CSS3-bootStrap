@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!-- bootstrap的html骨架结构 -->
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      .container {
+        margin: 40px;
+      }
+      .row div{
+        height: 50px;
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+  <!-- 如果col-md-1的比例加起来等于12则充满contanier，少于12则留白，多余12的会另起一行
+  另起的一行不会扩充父元素，而是溢出 -->
+  <!-- 响应式设计，如果屏幕缩小。只需新增类名把元素从小等分变为大等分适应屏幕，多出的的换行。
+    不加大等分当屏幕不够时，会全部换行成列。
+    lg大large，md中middle，sm小small，xs超小extral small且无法在缩
+  -->
+  <!-- 添加margin，padding可能会影响布局 -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">1</div>
+      <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">2</div>
+      <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">3</div>
+      <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">4</div>
+    </div>
+  </div>
+
+  <!-- 列嵌套 -->
+  <div class="container">
+    <!-- 列嵌套最好嵌套一个行去掉父元素的padding值，而且高度会和父元素一样高 -->
+    <div class="row">
+      <div class="col-sm-9">
+        .col-sm-9
+        <div class="row">
+          <div class="col-xs-8 col-sm-6">
+            .col-xs-8 .col-sm-6
+          </div>
+          <div class="col-xs-4 col-sm-6">
+            .col-xs-4 .col-sm-6
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 列偏移 -->
+  <div class="container">
+    <div class="row">
+      <!-- 偏移量4则一个4的列 -->
+      <div class="col-md-4">.col-md-4</div>
+      <div class="col-md-4 col-md-offset-4">.col-md-4 .col-md-offset-4</div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
+      <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">.col-md-6 .col-md-offset-3</div>
+    </div>
+  </div>
+
+  <!-- 列排序
+  pull左拉，push右推，若干等分，一般动态操作 -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9 col-md-push-3">.col-md-9 .col-md-push-3</div>
+      <div class="col-md-3 col-md-pull-9">.col-md-3 .col-md-pull-9</div>
+    </div>
+  </div>
+
+  <!-- 响应式工具
+  hidden，指定尺寸下隐藏，visible指定尺寸下显示 -->
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-3">1</div>
+      <div class="col-xs-3">2</div>
+      <!-- md和xs这段间隙又会显示 -->
+      <div class="col-xs-3 hidden-md hidden-xs">3</div>
+      <div class="col-xs-3 visible-lg">4</div>
+    </div>
+  </div>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+{/* easyless局部配置 */
+  "less.compile": {
+      "compress": true,
+      "sourceMap": false,
+      "out": true,
+      "outExt": ".css",
+  }
+}
