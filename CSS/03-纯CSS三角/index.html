@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 原理，当一个元素没有内容为0时，加厚边框就形成了三角。
+    记住基准图叉型正方形即可，他是由border来确立三角边框 */
+    .box1{
+      width: 0;
+      height: 0;
+      border-top: 100px solid pink;
+      border-right: 100px solid yellow;
+      border-bottom: 100px solid red;
+      border-left: 100px solid blue;
+    }
+
+    /* 单独三角，只声明三处或者设置为透明，重要，
+    css三角可用于一些指针展示效果。 */
+    .box2{
+      width: 0;
+      height: 0;
+      border-right: 100px solid transparent;
+      border-bottom: 100px solid red;
+      border-left: 100px solid transparent;
+    }
+
+    /* 强化版三角，两条边确立一个锐角三角，可用于边框修饰 */
+    .box3{
+      width: 0;
+      height: 0;
+      border-top: 200px solid transparent;
+      border-right: 100px solid blue;
+    }
+  </style>
+</head>
+<body>
+  <!--  -->
+  <div class="box1"></div>
+  <div class="box2"></div>
+  <div class="box3"></div>
+</body>
+</html>
