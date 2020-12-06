@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .f {
+      position: relative;
+      margin: 300px auto;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      transition: 0.4s;
+    }
+
+    /* 翻转 */
+    .f:hover {
+      transform: rotateY(180deg);
+    }
+
+    /* 公共样式 */
+    .c {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgb(160, 123, 248);
+      color: white;
+      font-size: 40px;
+    }
+
+    .font {
+      background-color: rgb(160, 123, 248);
+      z-index: 1;/* 至于顶层 */
+    }
+
+    .back {
+      background-color: rgb(228, 56, 43);
+      transform: rotateY(180deg);/* 把背面的设为镜像，不然翻过来不正常。 */
+    }
+  </style>
+</head>
+<body>
+  <div class="f">
+    <div class="c font">天字号</div>
+    <div class="c back">翠花</div>
+  </div>
+</body>
+</html>

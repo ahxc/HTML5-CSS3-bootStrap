@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 定义圆环波纹公共样式 */
+    .pulse {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        /* 不影响位置的居中方式，因为会定义多个波纹且都是绝对定位，所以用此方式
+        这里不用scale，会使阴影变宽变大 */
+        transform: translate(-50%, -50%);
+        width: 8px;
+        height: 8px;
+        box-shadow: 0 0 10px #009dfd;
+        border-radius: 50%;
+        animation: pulse 1.2s linear infinite forwards;
+    }
+    .p2{/* 注意权重问题 */
+      animation-delay: 0.4s;
+    }
+    .p3{
+      animation-delay: 0.8s;
+    }
+    /* 父盒子圆点 */
+    .doted {
+      position: relative;
+      margin: 400px auto;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: red;
+    }
+    /* 定义扩散波纹动画 */
+    @keyframes pulse {
+        0% {}
+        50% {
+            width: 20px;/* 不使用scale因为会使阴影变大 */
+            height: 20px;
+            opacity: 1;/* 不透明度 */
+        }
+        100% {
+            width: 40px;
+            height: 40px;
+            opacity: 0;
+        }
+    }
+  </style>
+</head>
+<body>
+  <div class="doted">
+    <div class="pulse"></div>
+    <div class="pulse p2"></div>
+    <div class="pulse p3"></div>
+  </div>
+</body>
+</html>
