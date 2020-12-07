@@ -1,24 +1,5 @@
 
 
-### 自定义字体
-
-```css
-@font-face{
-     font-family: '字体名称随便起'; 
-     src: url('../font/字体名称.eot');
-     src: url('../font/字体名称.woff') format('woff'),
-          url('../font/字体名称.ttf') format('truetype'),
-          url('../font/字体名称.svg') format('svg');
-}
-h1{
-    font-family: "字体名称随便起";
-}
-```
-
-### CSS中@用法小结
-
-[**at-rule**](https://blog.csdn.net/zcy_wxy/article/details/80652247)是一个声明，为CSS提供或执行一些规则。
-
 ### 常用浏览器以及内核
 
 **ie**：Trident
@@ -35,6 +16,21 @@ font复合写法，font-size和font-family必须保留，否则失效，省略�
 
 ```
 font: font-style font-weight font-size/line-height font-family;
+```
+
+**自定义字体**
+
+```css
+@font-face{
+     font-family: '字体名称随便起'; 
+     src: url('../font/字体名称.eot');
+     src: url('../font/字体名称.woff') format('woff'),
+          url('../font/字体名称.ttf') format('truetype'),
+          url('../font/字体名称.svg') format('svg');
+}
+h1{
+    font-family: "字体名称随便起";
+}
 ```
 
 **行高的继承特殊性**（重要）：子继承1.5*12px的行距。
@@ -106,6 +102,8 @@ input:focus {
 ```
 
 ### 元素显示模式
+
+[链接](https://www.cnblogs.com/i969639/p/11201140.html)
 
  **块元素**：div h p ul ol li等
 
@@ -926,9 +924,11 @@ p1/p2 = f1*15/p2
 所以不同屏幕下的字体只要屏幕宽度除以划分的份数即可。
 ```
 
-**适配方案2：淘宝flexible.js**：其原理是先把屏幕划分若干等分，10份，然后算出设计稿的rem：字体大小，通过字体大小来设计设计稿。其他的交给flexible.js。相比较第一个方案，不用写很多的媒体查询了。设计单位还是rem，且固定屏幕为10份。
+**适配方案2：淘宝flexible.js**：其原理类似，先把屏幕划分若干等分，10份，每一份即1rem：字体大小，通过字体大小来设计设计稿。其他的交给flexible.js，flexible会根据屏幕宽度来修改字体大小。相比较第一个方案，不用写很多的媒体查询了。
 
 1.github下载flexble.js。2.要用的页面导入script脚本即可。
+
+**注意**：不同稿件要记得修改CSSrem插件的设计稿基准字体大小。然后重启。
 
 ### 媒体查询
 
@@ -978,7 +978,9 @@ less可以直接运算，会转换为静态效果。如果单位不同，直接�
 
 ### 其他：
 
-order：n; 设置元素在同级元素上的位置，可以为负，数值越小越高前。默认是0，灵活性更高。
+order：n; 设置元素在同级元素上的位置，可以为负，数值越小越高前。默认是0，灵活性更高。CSS中@用法小结
+
+[**at-rule**](https://blog.csdn.net/zcy_wxy/article/details/80652247)是一个声明，为CSS提供或执行一些规则。
 
 ### SEO优化（搜索引擎优化）
 
