@@ -37,23 +37,21 @@ h1{
 
 父font: 14px/1.5;，子font: 12px;
 
-```html
-<style>
-    * {
-        font: normal 700 16px "Microsoft yahei";
-        text-decoration: underline;/* 重点记住下划线和none */
-        text-indent:  2em;/* 文本缩进两个字，em表示的就是父元素字体大小 */
-        line-height: 1em;/* 行间距，不跟单位就是size的倍数 */
-        justify-content: space-between;
-    }
-</style>
+```css
+* {
+	font: normal 700 16px "Microsoft yahei";
+    text-decoration: underline;/* 重点记住下划线和none */
+    text-indent:  2em;/* 文本缩进两个字，em表示的就是父元素字体大小 */
+    line-height: 1em;/* 行间距，不跟单位就是size的倍数，如果和元素高度一致，则是垂直居中适用于文字 */
+    justify-content: space-between;
+}
 ```
 
 ### CSS层叠样式表简介，也是一种标记语言
 
 **语法**： 选择器{声明}
 
-选择器包括：标签，类，id，通配符选择器。
+选择器基本类型包括：标签，类，id，通配符。
 
 id选择常用作唯一标识符，经常和js搭配使用。通配符选择器，*表示所有，不推荐使用消耗性能。
 
@@ -115,12 +113,12 @@ input:focus {
 
 **行内块元素**：img input td等
 
-同行当由间隙，本身多大就是多大，高宽可控。
+同行但有间隙，本身多大就是多大，高宽可控。
 
 模式转换：
 
 ```
-display: block inline inline-block;
+display: block inline inline-block none;
 ```
 
 ### 背景一些属性
@@ -150,6 +148,8 @@ background: color image repeat attachment position;
 **1.层叠性**：即相同的声明属性值如果一样（样式冲突），就近原则：离结构越近则优先级最高
 
 **2.继承性**（重要）：多使用继承可节省性能开销
+
+[博客园](https://www.cnblogs.com/thislbq/p/5882105.html)
 
 **3.优先级**，同级的优先级就近原则：
 
@@ -329,6 +329,12 @@ overflow: hidden auto scroll;三者都可，**缺点**就是无法显示溢�
 }
 ```
 
+### float与display的区别
+
+**float**是元素浮动，页面变化会朝对齐方向重新排列，float定义在子元素上。
+
+**display**是弹性盒子，会根据页面变化伸缩盒子，display定义在父元素上
+
 ### CSS属性书写顺序（重点）
 
 **1.布局定位属性**：display/position/float/clear/visibility/overflow（关系到模式的最先写）
@@ -375,7 +381,7 @@ absolute，**绝对定位**，（重要）相对祖先元素或者距离最近�
 
 fixed，**固定定位**，（重要）固定定位以视窗为基准，不跟父元素有任何关系，不随滚动而滚动。脱标。
 
-sticky，**粘性定位**，（了解）占有原有位置，必须添加一个边偏距，以视窗为基准，即吸顶效果，但这个功能开发用的少。
+sticky，**粘性定位**，（了解）占有原有位置，必须添加一个边偏距，以视窗为基准，即吸顶效果，由于兼容性问题用的少。
 
 **边偏移**（定位使用的属性）：top，bottom，left，right
 
@@ -397,11 +403,15 @@ sticky，**粘性定位**，（了解）占有原有位置，必须添加一个�
 
 ### 元素的显示与隐藏
 
-**display**，none隐藏对象，位置不保留。block除了块元素还有显示元素的意思，搭配none使用可以设置光标悬停显示效果。
+**display**，none隐藏对象。
 
-**visibility**，hidden隐藏元素，visible显示元素，位置保留。
+位置不保留。block除了块元素还有显示元素的意思，搭配none使用可以设置光标悬停显示效果。
 
-**overflow**，hidden隐藏溢出的元素，scroll不管溢出都显示滚动条，auto溢出时才显示滚动条。 
+**visibility**，hidden隐藏元素；visible显示元素；collapse也是hidden的意思，表现会和浏览器不同而变化，对于table标签，谷歌里和hidden没区别，火狐里行会消失，下一行会补充，类似display:none。
+
+位置保留，有继承性。
+
+**overflow**，hidden隐藏溢出的元素；scroll不管溢出都显示滚动条；auto溢出时才显示滚动条。 
 
 ### CSS精灵图（CSS雪碧，CSS Sprites）
 
@@ -458,6 +468,8 @@ vertical-align: top/middle/base/bottom;
     white-space: nowrap;
 	overflow: hidden;
 	text-overflow:ellipsis;/* 省略号 */
+
+    flex-wrap: nowrap;/* 新特性，默认不换行 */
 }
 ```
 
@@ -487,6 +499,26 @@ vertical-align: top/middle/base/bottom;
 
 3.对于多标签的点击能用a不用div，可设置display: inline-block;设为行内块元素。则可设置高宽等属性。
 
+### 如何去除inline-block元素间隙？
+
+空隙产生原因：HTML中的换行符、空格符、制表符等空白符，字体大小不为0的情况下，空白符占据一定宽度，使用inline-block会产生元素间的空隙。
+
+**解决办法：**
+
+1. 把所有的子元素写在一行；
+2. 子元素设置浮动；
+3. 父元素的font-size设置为0，子元素的font-size设置为实际大小；
+4. 使用注释：
+
+```html
+<div class="parent"> 
+&emsp;&emsp;&emsp; <div class="child"></div><!--
+&emsp;&emsp;--><div class="child"></div><!--
+&emsp;&emsp;--><div class="child"></div><!--
+&emsp;&emsp;--><div class="child"></div>
+</div>
+```
+
 ### CSS初始化 reset
 
 有多种初始化[方案](https://www.jianshu.com/p/ef690746ef96)。获取方法：1.百度初始化方案，2.大厂网页源码直接找link。
@@ -509,7 +541,7 @@ div对于搜索引擎来说是没有语义的，
 
 ### CSS3新特性
 
-**1.新增[选择器](https://www.runoob.com/cssref/css-selectors.html)**（重点）详细参看菜鸟教程CSS3，下面只例几个样例。
+**1.新增[选择器](https://www.runoob.com/cssref/css-selectors.html)**（重点）详细参看[菜鸟教程](https://www.runoob.com/cssref/css-selectors.html)，下面只例几个样例。
 
 属性选择器 attribute字样
 
@@ -519,13 +551,19 @@ div对于搜索引擎来说是没有语义的，
 
 **2.盒子模型**
 
-box-sizing
+盒子边框box-sizing，弹性盒 Flexible Box 或 flexbox
 
 **3.动画animation**
 
 **4.浏览器私有前缀**
 
 **5.转换transform**
+
+**6.边框圆角**：`border-radius：3px`
+
+**7.自定义字体**：`@font-face`
+
+**8.媒体查询**：`@media`
 
 ### 属性选择器
 
@@ -862,21 +900,28 @@ img {
 ### 移动端技术解决方案
 
 ```css
-box-sizing: border-box;/* 盒子模型 */
--webkit-box-sizing: border-box;
--webkit-tap-highlight-color: transparent;/* 设置透明 */
--webkit-appearance: none;/* ios里加上这个才能给按钮和输入框自定义样式 */
+{
+    box-sizing: border-box;/* 盒子模型 */
+	-webkit-box-sizing: border-box;
+	-webkit-tap-highlight-color: transparent;/* 设置透明 */
+	-webkit-appearance: none;/* ios里加上这个才能给按钮和输入框自定义样式 */
+    /* 渐变，可以加入多种颜色 */
+    -webkit-linear-gradient(0deg/可以是top left等, blue, green, 40%, red);
+}
 img, a {/* 禁用长按页面弹出菜单 */
 	-webkit-touch-callout: none;
 }
--webkit-linear-gradient(0deg/可以是top left等, blue, green, 40%, red);可以加入多种颜色
 ```
 
 ### 移动端常见布局
 
+[掘金](https://juejin.cn/post/6844903814332432397)
+
 主流布局：流式布局，flex弹性布局（推荐），less+rem+媒体查询布局，混合布局。
 
 响应式布局：bootstrap+媒体查询。
+
+响应式设计与自适应设计的区别：响应式开发一套界面（比较大），通过检测视口分辨率，针对不同客户端在客户端做代码处理，来展现不同的布局和内容；自适应需要开发多套界面，通过检测视口分辨率，来判断当前访问的设备是pc端、平板、手机，从而请求服务层，返回不同的页面。自适应一般内容不会变。
 
 **1.流式布局（百分比布局）**
 
@@ -888,7 +933,7 @@ img, a {/* 禁用长按页面弹出菜单 */
 
 **注意**：父盒子设置flex后，子盒子的float，clear，vertical-align都将失效。
 
-设立flex后的常用属性：
+**设立flex后的常用属性**：
 
 [flex-direction](https://www.runoob.com/cssref/css3-pr-flex-direction.html)：主轴方向。
 
@@ -930,6 +975,10 @@ p1/p2 = f1*15/p2
 
 **注意**：不同稿件要记得修改CSSrem插件的设计稿基准字体大小。然后重启。
 
+### em\px\rem区别
+
+px：绝对单位，页面按精确像素展示。em/rem相对单位。
+
 ### 媒体查询
 
 ```css
@@ -946,7 +995,7 @@ mediatype：媒体类型，all：用于所有设备，print：打印机和打印
 
 ### CSS的弊端
 
-CSS是非程序式语言。**没有作用域的概念**，因此CSS是全局的。CSS冗余度比较高，不方便复用维护和扩展。
+CSS是非程序式语言。**没有变量，作用域的概念**，变量本质是自定义属性，因此CSS是全局的。CSS冗余度比较高，不方便复用维护和扩展。
 
 CSS中最难的部分
 1. 如何实现某种效果(cosmetic problems)
@@ -976,11 +1025,42 @@ less可以直接运算，会转换为静态效果。如果单位不同，直接�
 
 @import "name";不需要后缀名。
 
+**less混合：**
+
+混合mixins是将一组属性混合在另一组属性中。
+
+```less
+.bordered {
+  border-top: dotted 1px black;
+  border-bottom: solid 2px black;
+}
+#menu a {
+  color: #111;
+  .bordered();
+}
+```
+
+[less快速入门](https://less.bootcss.com/#%E6%A6%82%E8%A7%88)
+
+### rgba和opacity的透明有何不同？
+
+opacity：0~1的不透明度，可以继承。CSS3
+
+rgba：0~255的取值范围，0~1的不透明度，不可继承。
+
 ### 其他：
 
 order：n; 设置元素在同级元素上的位置，可以为负，数值越小越高前。默认是0，灵活性更高。CSS中@用法小结
 
 [**at-rule**](https://blog.csdn.net/zcy_wxy/article/details/80652247)是一个声明，为CSS提供或执行一些规则。
+
+### link和@import的区别
+
+1. link属于XHTML标签，而@import是CSS提供的。
+2. 页面加载时，link会同时被加载，而@import引用的CSS会等到页面被加载完再加载。
+3. import只在IE 5以上才能识别，而link是XHTML标签，无兼容问题。
+4. link方式的样式权重高于@import的权重。
+5. 使用dom控制样式时的差别。当使用javascript控制dom去改变样式的时候，只能使用link标签，因为@import不是dom可以控制的。
 
 ### SEO优化（搜索引擎优化）
 
@@ -998,3 +1078,43 @@ overflow: hidden;
 ```
 font-size: 0;
 ```
+
+### 重排(reflow)和重绘(repaint)（重点）
+
+[掘金](https://juejin.cn/post/6844904083212468238)
+
+### 操作dom为什么是昂贵的（结合重排重绘）
+
+因为DOM的变化影响了元素的几何信息（元素的的位置和尺寸大小），浏览器需要重新计算元素的几何属性，将DOM安放在界面中的正确位置，这就是**重排**。重排也叫回流，简单的说就是重新生成布局，重新排列元素。这需要消耗很大性能。
+
+**重绘**：当一个元素的外观发生改变，但没有改变布局，重新把元素外观绘制出来的过程，叫做重绘。简而言之就是只改变了样式。
+
+**重绘不一定导致重排，但重排一定会导致重绘**。
+
+重排的代价是高昂的，会破坏用户体验，并且让UI展示非常迟缓。通过减少重排的负面影响来提高用户体验的最简单方式就是尽可能的减少重排次数，重排范围。
+
+### CSS优化与性能提高（重点）
+
+css匹配原理：从html中由右向左，从里层到最外层。
+
+1，减少css嵌套，最好不要套三层以上，一般情况下块级元素加上类，里面的内联元素不用加，css写的时候块级class套内联tag，这样不仅可以减少css文件大小，还能减少性能浪费。
+
+2，不要在ID选择器前面进行嵌套，ID本来就是唯一的而且人家权值那么大，前方嵌套完全是浪费性能。
+
+3，建立公共样式类，把公共样式部分抽离出来
+
+4，复合写法编写css，其中包括缩写maigin，padding，颜色值等等，即不要分的太细，如margin-top...。
+
+5，减少通配符*或者类似[hidden="true"]这类选择器的使用，它会挨个查找所有。
+
+6，有些人喜欢在类名前面加上标签名：p.ty_p 来进行更加精确的定位，类名全局应该独一，除了公共样式，不要嵌套太多。
+
+7，巧妙运用css的继承机制，在css中很多属性是可以继承的比如颜色字体等等，父节点定义了，子节点就无需定义。
+
+8，不用css表达式，因为结果都是静态的，但是会有性能浪费，因为它并不只是计算一次，一些小的事件可能都会增加它为了有效准确而进行计算求值的次数。
+
+9，少用css reset或者精简，可能你会觉得重置样式是规范，但是其实其中有很多的操作是不必要不友好的，有需求有兴趣的朋友可以选择normolize.css。[css reset](https://www.jianshu.com/p/ef690746ef96)
+
+10，cssSprite，把所有icon图片加成一张图片，用宽高加上bacgroud-position的背景图方式，一个点击部分显示图片一部分，这是一种十分实用的技巧，极大减少了http请求。
+
+11，不同元素最好对应不同标签，如span，h标签等等，能减少很多重复样式声明。
