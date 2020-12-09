@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <!-- @keyframe 和 animation 的搭配使用。 -->
   <style>
     /* 定义圆环波纹公共样式 */
+    body{
+      background-color: black;
+    }
     .pulse {
         position: absolute;
         top: 50%;
@@ -19,11 +23,15 @@
         border-radius: 50%;
         animation: pulse 1.2s linear infinite forwards;
     }
-    .p2{/* 注意权重问题 */
+    /* 注意权重问题 */
+    .p2{
       animation-delay: 0.4s;
     }
     .p3{
       animation-delay: 0.8s;
+    }
+    .doted:hover div{
+      animation-play-state: paused;
     }
     /* 父盒子圆点 */
     .doted {

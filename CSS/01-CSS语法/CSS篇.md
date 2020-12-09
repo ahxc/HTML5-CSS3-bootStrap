@@ -1,5 +1,3 @@
-
-
 ### 常用浏览器以及内核
 
 **ie**：Trident
@@ -14,8 +12,10 @@
 
 font复合写法，font-size和font-family必须保留，否则失效，省略的直接不写，顺序不能变
 
-```
-font: font-style font-weight font-size/line-height font-family;
+```css
+* {
+    font: font-style font-weight font-size/line-height font-family;
+}
 ```
 
 **自定义字体**
@@ -49,7 +49,7 @@ h1{
 
 ### CSS层叠样式表简介，也是一种标记语言
 
-**语法**： 选择器{声明}
+**语法**： 选择器  {声明;}
 
 选择器基本类型包括：标签，类，id，通配符。
 
@@ -57,11 +57,11 @@ id选择常用作唯一标识符，经常和js搭配使用。通配符选择器�
 
 ### CSS三种样式表（书写位置）
 
-**1.行内样式表****（行内式）即标签内部style属性，完全嵌入结构，极不推荐
+**1.行内样式表****（行内式）即标签内部style属性，完全嵌入结构，极不推荐。
 
-**2.内部样式表**（嵌入式）即head内的style标签，没有与结构完全分离
+**2.内部样式表**（嵌入式）即head内的style标签，没有与结构完全分离。
 
-**3.外部样式表**（链接式）即
+**3.外部样式表**（链接式）即：
 
 ```html
 <link rel="stylesheet" href="路径">
@@ -117,9 +117,11 @@ input:focus {
 
 模式转换：
 
-```
+```css
 display: block inline inline-block none;
 ```
+
+### [BFC](https://zhuanlan.zhihu.com/p/25321647)（重点）
 
 ### 背景一些属性
 
@@ -177,8 +179,10 @@ ul li {}; li{};前者的权重大于后者，比较原理即按上表各元�
 
 border的复合写法：
 
-```
-border: width type color;
+```css
+* {
+	border: width type color;
+}
 ```
 
 border-collapse: collapse;合并相邻边框
@@ -215,23 +219,21 @@ padding:0; margin:0;
 
 **注意**：行内元素尽量不要设置上下内外边距，照顾浏览器兼容性，但转换为块级或者行内块级元素则无此顾虑
 
-### 综合问题（重点）详细的看面试题
-
-1.不同元素最好还是对应不同标签，不要一股脑div，能省下很多样式声明。
-
-2.多用类名，且类名要尽量唯一，除了公共类，而且尽量不要和标签名混合选择器。
-
 ### 圆角边框（重点）css3
 
+```css
+* {
+	border-radius: 1 2 3 4;
+}
 ```
-border-radius: 1 2 3 4;
-```
 
-一个整数值，表示角上圆的半径，因此如果等于高的一半则为一个半圆。
+一个值：表示角上圆的半径，因此如果等于高的一半则为一个半圆。
 
-两个值，即上下，左右，可以设置平行四边型的样式。
+两个值，即上下（左上角对角线），左右（右上角对角线），可以设置平行四边型的样式。
 
-四个值可以分别设置，当然这用的少。
+三个值：左上角，右上角对角线，右下角。
+
+四个值：可以分别设置，顺序从左上角开始，顺时针。
 
 ### 盒子阴影（重点）css3
 
@@ -260,6 +262,10 @@ text-shadow: h-shadow v-shadow blur color;
 **定位**
 
 标准布局：1.块级元素从上往下，2.行内元素从左往右
+
+### 圣杯布局和双飞翼布局
+
+[掘金](https://juejin.cn/post/6844903763329679368)
 
 ### 为什么要浮动（float相关知识点都很重要）
 
@@ -979,6 +985,16 @@ p1/p2 = f1*15/p2
 
 px：绝对单位，页面按精确像素展示。em/rem相对单位。
 
+### 怎么让浏览器支持小于12px 的文字？
+
+```css
+* {
+    display: inline-block;
+    font-size: 14px;
+    transform: scale(0.8);/* 缩放 */
+ }
+```
+
 ### 媒体查询
 
 ```css
@@ -1079,6 +1095,14 @@ overflow: hidden;
 font-size: 0;
 ```
 
+### 如何消除ul和li前面的点？
+
+```css
+* {
+	list-style-type: none;
+}
+```
+
 ### 重排(reflow)和重绘(repaint)（重点）
 
 [掘金](https://juejin.cn/post/6844904083212468238)
@@ -1118,3 +1142,65 @@ css匹配原理：从html中由右向左，从里层到最外层。
 10，cssSprite，把所有icon图片加成一张图片，用宽高加上bacgroud-position的背景图方式，一个点击部分显示图片一部分，这是一种十分实用的技巧，极大减少了http请求。
 
 11，不同元素最好对应不同标签，如span，h标签等等，能减少很多重复样式声明。
+
+### 如何让非文字类元素实现水平垂直居中？
+
+**普通div的水平居中**
+
+```css
+* {margin: 0 auto;}
+```
+
+**绝对定位的水平居中：**
+
+```css
+* {
+    position:absolute;
+	left:50%;
+	top:50%;
+	margin-left:-50px;
+	margin-top:-50px;
+}
+```
+
+**浮动元素的水平垂直居中：**
+
+```css
+* {
+    border: 1px solid red;/* 防止塌陷 */
+	float: left;
+	position: absolute;
+	width: 200px;
+	height: 100px;
+	left: 50%;
+	top: 50%;
+	margin: -50px 0 0 -100px;
+}
+```
+
+### 利用绝对定位元素的自动伸缩特性水平垂直居中
+
+```css
+.father {
+    position: relative;
+}
+.son {
+    position:absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+```
+
+### 利用flex布局水平垂直居中
+
+```css
+#box {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+}
+```
