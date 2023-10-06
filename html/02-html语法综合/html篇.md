@@ -24,6 +24,7 @@
 <em>倾斜</em><i>倾斜</i>
 <del>删除线</del><s>删除线</s>
 <ins>下划线</ins><u>下划线</u>
+<pre>保留文本格式包括空格和换行符</pre>
 ```
 
 ### 无语义盒子标签
@@ -49,7 +50,8 @@ href：可以是内部链接，外部链接，空连接#，下载链接地址是
 
 ```html
 <a id="zx" href="" target=""></a>
-<a href="#zx"></a>
+<a href="#zx"></a> // id等于zx的元素，如果只有 # ，则是#top网页上端
+<a href="javascript:void(0)"> // 连接通过javascript执行，void(0)表示不做任何操作，防止链接跳转刷新。目的在于保留a标签样式功能用作button。
 ```
 
 ### 表格
