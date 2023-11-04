@@ -1,4 +1,4 @@
-### 常用浏览器以及内核
+### l常用浏览器以及内核
 
 **ie**：Trident
 
@@ -136,8 +136,6 @@ input:focus {
 ```css
 display: block inline inline-block none;
 ```
-
-### [BFC](https://zhuanlan.zhihu.com/p/25321647)（重点）
 
 ### 背景一些属性
 
@@ -321,7 +319,7 @@ text-shadow: h-shadow v-shadow blur color;
 
  缺点就是添加了**无意义标签**，结构化差。
 
-**2.父元素添加overflow**
+**2.父元素包裹。添加overflow**
 
 overflow: hidden auto scroll;三者都可，**缺点**就是无法显示溢出部分。
 

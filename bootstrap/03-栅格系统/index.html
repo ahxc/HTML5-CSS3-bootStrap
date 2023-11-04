@@ -1,23 +1,45 @@
 <!DOCTYPE html>
 <!-- bootstrap的html骨架结构 -->
 <html lang="zh-CN">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-      .container {
-        margin: 40px;
-      }
-      .row div{
-        height: 50px;
-        background-color: pink;
-      }
-    </style>
-  </head>
-  <body>
+
+<head>
+  <meta charset="utf-8">
+  <meta
+    http-equiv="X-UA-Compatible"
+    content="IE=edge"
+  >
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+  <title></title>
+  <!-- Latest compiled and minified CSS -->
+  <link
+    rel="stylesheet"
+    href="../bootstrap-3.3.7-dist/css/bootstrap.min.css"
+  >
+
+  <!-- Optional theme -->
+  <link
+    rel="stylesheet"
+    href="../bootstrap-3.3.7-dist/css/bootstrap-theme.min.css"
+  >
+  <style>
+    .container {
+      margin: 40px;
+    }
+
+    .row div {
+      height: 50px;
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
   <!-- 如果col-md-1的比例加起来等于12则充满contanier，少于12则留白，多余12的会另起一行
   另起的一行不会扩充父元素，而是溢出 -->
   <!-- 响应式设计，如果屏幕缩小。只需新增类名把元素从小等分变为大等分适应屏幕，多出的的换行。
@@ -88,5 +110,6 @@
       <div class="col-xs-3 visible-lg">4</div>
     </div>
   </div>
-  </body>
+</body>
+
 </html>

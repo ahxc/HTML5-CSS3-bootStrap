@@ -1,26 +1,78 @@
 <style type="text/css">
-	@keyframes tick6 {
-    0%       { margin-top: 0;}
-    16.66%   { margin-top: -20px; }
-    33.33%   { margin-top: -40px; }
-    50%      { margin-top: -60px; }
-    66.66%   { margin-top: -80px; }
-    83.33%   { margin-top: -100px; }
-    100%     { margin-top: -120px; }
+  @keyframes tick6 {
+    0% {
+      margin-top: 0;
+    }
+
+    16.66% {
+      margin-top: -20px;
+    }
+
+    33.33% {
+      margin-top: -40px;
+    }
+
+    50% {
+      margin-top: -60px;
+    }
+
+    66.66% {
+      margin-top: -80px;
+    }
+
+    83.33% {
+      margin-top: -100px;
+    }
+
+    100% {
+      margin-top: -120px;
+    }
   }
 
   @keyframes tick10 {
-    0%      { margin-top: 0; }
-    10%     { margin-top: -20px; }
-    20%     { margin-top: -40px; }
-    30%     { margin-top: -60px; }
-    40%     { margin-top: -80px; }
-    50%     { margin-top: -100px; }
-    60%     { margin-top: -120px; }
-    70%     { margin-top: -140px; }
-    80%     { margin-top: -160px; }
-    90%     { margin-top: -180px; }
-    100%    { margin-top: -200px; }
+    0% {
+      margin-top: 0;
+    }
+
+    10% {
+      margin-top: -20px;
+    }
+
+    20% {
+      margin-top: -40px;
+    }
+
+    30% {
+      margin-top: -60px;
+    }
+
+    40% {
+      margin-top: -80px;
+    }
+
+    50% {
+      margin-top: -100px;
+    }
+
+    60% {
+      margin-top: -120px;
+    }
+
+    70% {
+      margin-top: -140px;
+    }
+
+    80% {
+      margin-top: -160px;
+    }
+
+    90% {
+      margin-top: -180px;
+    }
+
+    100% {
+      margin-top: -200px;
+    }
   }
 
   body {
@@ -41,21 +93,21 @@
     line-height: 20px;
   }
 
-	.digit {
+  .digit {
     display: flex;
     flex-direction: column;
-	  overflow: hidden;
-	  height: 20px;
+    overflow: hidden;
+    height: 20px;
     width: 10px;
     line-height: 20px;
     color: #fff;
     font-weight: bold;
     background-color: black;
-	}
+  }
 
-	.digit div {
-	  height: 100%;
-	  width: 100%;
+  .digit div {
+    height: 100%;
+    width: 100%;
   }
 
   .digit-hour {
@@ -70,34 +122,39 @@
   .hour-digit-one {
     animation: tick3 0s step-end infinite;
   }
-  
+
   .hour-digit-two {
     animation: tick4 14400s step-end infinite;
   }
 
-	.minutes-digit-one {
-	  animation: tick6 3600s step-end infinite;
-	}
+  .minutes-digit-one {
+    animation: tick6 3600s step-end infinite;
+  }
 
-	.minutes-digit-two {
-	  animation: tick10 600s step-end infinite;
-	}
+  .minutes-digit-two {
+    animation: tick10 600s step-end infinite;
+  }
 
-	.seconds-digit-one {
-	  animation: tick6 60s step-end infinite;
-	}
+  .seconds-digit-one {
+    animation: tick6 60s step-end infinite;
+  }
 
-	.seconds-digit-two {
-	  animation: tick10 10s step-end infinite;
-	}
+  .seconds-digit-two {
+    animation: tick10 10s step-end infinite;
+  }
 </style>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
   <title>Document</title>
 </head>
+
 <body>
   <div class="container">
     <div class="digit-hour">
@@ -150,4 +207,5 @@
     </div>
   </div>
 </body>
+
 </html>
